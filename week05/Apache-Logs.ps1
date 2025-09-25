@@ -1,4 +1,4 @@
-﻿# Write a function that will take 3 inputs: 
+# Write a function that will take 3 inputs: 
 # The page visited or referred from, HTTP code returned, and the name of the web browser.
 
 # It will give 1 output:
@@ -7,16 +7,25 @@
 
 $LogPath = "C:\xampp\apache\logs\access.log"
 
-parsing_apache_logs.ps1.ApacheLogs1()
-
-function Get-IPs(page; http; browser){
-    $logEntries = Get-Content $LogPath
+function Get-IPs(){
     
-    matchingIPs = @()
-    
-    foreach ($entry in $logEntries) {
-        for ($i = 0; $i -lt $entry.Length; $i++){
+    #$logEntries = Get-Content $LogPath
+    #$currentLogs = .\.\parsing_apache_logs.ps1
 
-        }
-    }
+    #return $currentLogs | Where-Object { $_.IP -ilike "10.*" }
+
+
+    #matchingIPs = @()
+    
+    #foreach ($entry in $logEntries) {
+       # for ($i = 0; $i -lt $entry.Length; $i++){
+$currentLogs = ApacheLogs1
+#Write-Output($currentLogs)
+return $currentLogs | Where-Object 
+    { 
+      $_.Response -ilike "200" }
+    
 }
+
+$currentLogs = Get-IPs
+$currentLogs | Format-Table -AutoSize -Wrap
